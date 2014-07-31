@@ -7,7 +7,7 @@
  * @author 			Tim Bennett
  * @version 		1.0
  *
- * Download the latest version at www.texelate.co.uk/lab/links-to-select/
+ * Download the latest version at www.texelate.co.uk/lab/project/links-to-select/
  *
  * Open source under the MIT license:
  *
