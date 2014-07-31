@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>linksToSelect Minimum Setup</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="js/jquery.linksToSelect.js"></script>
+		<style type="text/css">
+		
+			/**
+			 * Some basic styles - none of which are necessary
+			 */
+		
+			body {
+				
+				padding: 20px;
+				margin: 0;
+				line-height: 1.5;
+				
+			}
+			
+			p {
+				
+				font-family: Arial ,sans-serif;
+				color: #666666;
+				text-shadow: 0px 1px 1px #FFFFFF;
+				font-size: 14px;
+				
+				
+			}
+			
+			a { 
+			
+				color: #08A5EF;
+				display: block;
+				width: 150px;
+				
+			}
+			
+			a:hover { color: #111111; }
+			
+			div.links-to-select { display: none; }
+			
+			@media only screen and (max-width: 950px) {
+			
+				div.sample-menu { display: none; }	
+				
+				div.links-to-select { display: block; }
+			
+			}
+		
+		</style>
+		<script>
+		
+			$(function() {
+
+				$('div.sample-menu').linksToSelect();
+				
+			});
+		
+		</script>
+	</head>
+	<body>
+		<div class="sample-menu" data-select-default="--- Choose a link ---">
+			<a href="http://www.google.co.uk/" target="_blank">Google</a>
+			<a href="http://www.bing.com/" target="_blank">Bing</a>
+			<a href="#" class="links-to-select-ignore">Ignore me</a>
+			<a href="#" class="links-to-select-disable">Disabled</a>
+			<a href="demo.html?foo=This+is+a+test&amp;bar=This%20is%20a%20%22test%22" class="links-to-select-selected">Current page</a>
+			<div>
+				<a href="#1">It works recursively</a>
+			</div>
+			<a href="#2">Internal link</a>
+		</div>
+		<p>Some content</p>
+		<div class="sample-menu" data-select-default="--- Choose another link ---">
+			<a>Link 1</a>
+			<a href="#2">Link 2</a>
+			<a href="#3" class="links-to-select-selected">Link 3</a>
+		</div>
+	</body>
+</html>
