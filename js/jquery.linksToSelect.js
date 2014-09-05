@@ -5,7 +5,7 @@
  * Converts a group of links to a select
  *
  * @author 			Tim Bennett
- * @version 		1.0
+ * @version 		1.1.0
  *
  * Download the latest version at www.texelate.co.uk/lab/project/links-to-select/
  *
@@ -46,7 +46,9 @@
 			ignoredClass: 			'links-to-select-ignore',		// If this class is present the option is ignored
 			selectedClass: 			'links-to-select-selected',		// If this class is present the option is set as selected
 			idPrefix: 				'links-to-select-',				// Each select has this plus the selector number  E.g. links-to-select-3
-			selectClass: 			'links-to-select'				// Each select is wrapped in a div  E.g. <div class="links-to-select"><select.../select></div>
+			selectClass: 			'links-to-select',				// Each select is wrapped in a div  E.g. <div class="links-to-select"><select.../select></div>
+			onInit:					function() {},
+			onDestroyed:			function() {}
 			
 		};
 		
@@ -58,10 +60,10 @@
 		
 		
 		/**
-		 * Element counter
+		 * Track elements
 		 */
-		var elementCounter = 1;
-		
+		var elementCounter  = 1;
+		var numElements		= this.length;
 		
 		/**
 		 * Warning prefix
@@ -183,12 +185,36 @@
 	           window.location.href = $(this).val();
 			            
 			});
+			
+			
+			/**
+			 * Public function to destroy
+			 */
+			$.fn.destroy = function() {
+			
+				// Remove all dynamically added selects by class name
+				$('div.' + options.selectClass).remove(); // Removing the element removes the listener as well
+				
+				// Destroyed callback
+				options.onDestroyed.call(this);
+			
+			};
 			 
 			 
 			/**
 			 * Increment the element counter
 			 */
 			elementCounter ++;
+			
+			
+			/**
+			 * onInit
+			 */
+			if(elementCounter === numElements) {
+			
+				options.onInit.call(this);
+			
+			}
 		
 		});			
 	

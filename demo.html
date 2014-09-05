@@ -33,7 +33,7 @@
 			
 				color: #08A5EF;
 				display: block;
-				width: 150px;
+				width: 350px;
 				
 			}
 			
@@ -54,7 +54,20 @@
 		
 			$(function() {
 
-				$('div.sample-menu').linksToSelect();
+				var $linksToSelect = $('div.sample-menu').linksToSelect({
+				
+					onInit: function() { console.log('linksToSelect initialised'); },
+					onDestroyed: function() { console.log('linksToSelect has been destroyed'); }
+				
+				});
+				
+				$('a#destroy').on('click', function(e) {
+				
+					e.preventDefault();
+					
+					$linksToSelect.destroy();
+				
+				});
 				
 			});
 		
@@ -74,9 +87,10 @@
 		</div>
 		<p>Some content</p>
 		<div class="sample-menu" data-select-default="--- Choose another link ---">
-			<a>Link 1</a>
+			<a>Link 1 - no href set so the console generates a warning</a>
 			<a href="#2">Link 2</a>
 			<a href="#3" class="links-to-select-selected">Link 3</a>
 		</div>
+		<p><a href="#" id="destroy">Click here to destroy linksToSelect</a></p>
 	</body>
 </html>
